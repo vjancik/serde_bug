@@ -23,8 +23,7 @@ impl<'de> de::Visitor<'de> for TestVisitor {
 fn callback<'de, D: Deserializer<'de>>(deserializer: D) -> Result<Option<i32>, D::Error> {
     println!("Not called!!!");
     let visitor = TestVisitor {};
-    deserializer.deserialize_option(visitor)?;
-    Ok(Some(0))
+    deserializer.deserialize_option(visitor)
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
